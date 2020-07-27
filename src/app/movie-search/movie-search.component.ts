@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MovieService } from '../movie.service';
 import { SearchService } from '../search.service';
 import { map, tap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 import { ISearch } from './ISearch';
 
 @Component({
@@ -12,7 +13,8 @@ import { ISearch } from './ISearch';
 export class MovieSearchComponent implements OnInit {
 
   search$: ISearch;
-  searchQuery = this.getSearchQuery();
+  searchQuery = this.route.snapshot.paramMap.get('title') ||
+                this.searchService.searchData;
   pageQuery = '&page=';
   pageNumber: number;
   imgUrl = 'https://image.tmdb.org/t/p/w500';
@@ -21,14 +23,15 @@ export class MovieSearchComponent implements OnInit {
               this.searchQuery + this.pageQuery;
 
   constructor(private movieService: MovieService,
-              private searchService: SearchService) { }
+              private searchService: SearchService,
+              private route: ActivatedRoute) { }
 
   // Search for movies
   displaySearch(): void {
     this.movieService.getMovieSearch(this.movieUrl)
                                 .pipe(
                                   map(item => this.search$ = item),
-                                  tap(item => console.log(item))
+                                  tap(item => console.log(item)),
                                 )
                                 .subscribe();
   }
@@ -71,10 +74,7 @@ export class MovieSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.searchService.searchData === undefined) {
-    } else {
-      this.displaySearch();
-    }
+    this.displaySearch();
   }
 
 }

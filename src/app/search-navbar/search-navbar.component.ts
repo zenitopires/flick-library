@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SearchService } from '../search.service';
 
 @Component({
@@ -10,7 +10,8 @@ import { SearchService } from '../search.service';
 export class SearchNavbarComponent implements OnInit {
   search: string;
   constructor(private searchService: SearchService,
-              private router: Router) { }
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   public passData(): void {
     this.searchService.searchData = this.search;
@@ -25,7 +26,7 @@ export class SearchNavbarComponent implements OnInit {
       return false;
     }
     this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(['/search']);
+    this.router.navigate(['/search/', this.search]);
   }
 
 }
