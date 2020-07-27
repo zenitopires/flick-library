@@ -72,9 +72,7 @@ export class MovieSearchComponent implements OnInit {
 
   ngOnInit() {
     if (this.searchService.searchData === undefined) {
-      console.log('No data');
     } else {
-      console.log(this.movieUrl);
       this.displaySearch();
     }
   }

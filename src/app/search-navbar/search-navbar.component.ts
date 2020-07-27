@@ -21,13 +21,11 @@ export class SearchNavbarComponent implements OnInit {
 
   onClick(): void {
     this.passData();
-    this.router.routeReuseStrategy.shouldReuseRoute = function() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
     }
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate(['/search']);
-    console.log(this.search);
-    console.log(this.searchService.searchData);
   }
 
 }
