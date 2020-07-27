@@ -4,4 +4,4 @@ A web application that will allow you to search for movies and retrieve informat
 
 This project is made using Angular.
 
-More information will be placed here as I continue working on application.
+More information will be placed here as I continue working on the application.
