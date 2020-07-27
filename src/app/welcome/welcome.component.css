@@ -1,0 +1,15 @@
+* {
+  color: whitesmoke;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: inline-block;
+}
+
+.card {
+  max-width: 100rem;
+}
