@@ -11,7 +11,7 @@ import { ISearch } from './ISearch';
 })
 export class MovieSearchComponent implements OnInit {
 
-  search: ISearch;
+  search$: ISearch;
   searchQuery = this.getSearchQuery();
   pageQuery = '&page=';
   pageNumber: number;
@@ -27,7 +27,7 @@ export class MovieSearchComponent implements OnInit {
   displaySearch(): void {
     this.movieService.getMovieSearch(this.movieUrl)
                                 .pipe(
-                                  map(item => this.search = item),
+                                  map(item => this.search$ = item),
                                   tap(item => console.log(item))
                                 )
                                 .subscribe();
@@ -37,7 +37,7 @@ export class MovieSearchComponent implements OnInit {
   pageSearch(url: string): void {
     this.movieService.getMovieSearch(url)
                                 .pipe(
-                                  map(item => this.search = item),
+                                  map(item => this.search$ = item),
                                   tap(item => console.log(item))
                                 )
                                 .subscribe();
@@ -61,7 +61,7 @@ export class MovieSearchComponent implements OnInit {
 
   // Go to previous page in movie results
   prevPage(currentPage: number): void {
-    if (currentPage > 0) {
+    if (currentPage > 1) {
       currentPage--;
       const searchUrl = 'https://api.themoviedb.org/3/search/' +
       'movie?api_key=83bb9e555fe9d2d8a45c9ca43f0711f9&query=' +

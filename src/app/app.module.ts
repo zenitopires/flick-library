@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SearchNavbarComponent } from './search-navbar/search-navbar.component';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { MovieSearchComponent } from './movie-search/movie-search.component';
     WelcomeComponent,
     SearchNavbarComponent,
     MovieSearchComponent,
+    MovieDetailComponent,
   ],
   imports: [
     BrowserModule,

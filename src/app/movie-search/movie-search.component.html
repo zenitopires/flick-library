@@ -1,20 +1,21 @@
-<div *ngIf="search" class="container">
-  <p *ngIf="search.total_results===1">{{search.total_results}} movie found</p>
-  <p *ngIf="search.total_results>1">{{search.total_results}} movies found</p>
-  <p *ngIf="search.total_pages === 0">No results found</p>
-  <p *ngIf="search.total_pages > 0">Page {{search.page}} of {{search.total_pages}}</p>
-  <button *ngIf="search.total_results" class="btn btn-outline-success fluid right my-2 my-sm-0"
+<div *ngIf="search$" class="container">
+  <p>{{search$.total_results}} movies found</p>
+  <!-- <p *ngIf="search$.total_results===1">{{search$.total_results}} movie found</p> -->
+  <!-- <p *ngIf="search$.total_results>1">{{search$.total_results}} movies found</p> -->
+  <p *ngIf="search$.total_pages === 0">No results found</p>
+  <p *ngIf="search$.total_pages > 0">Page {{search$.page}} of {{search$.total_pages}}</p>
+  <button *ngIf="search$.total_results" class="btn btn-outline-success fluid right my-2 my-sm-0"
           type="submit"
-          (click)="prevPage(search.page)">Previous
+          (click)="prevPage(search$.page)">Previous
   </button>
-  <button *ngIf="search.total_results"
+  <button *ngIf="search$.total_results"
           class="btn btn-outline-success my-2 my-sm-0"
           style="right: auto;"
           type="submit"
-          (click)="nextPage(search.page, search.total_pages)">Next
+          (click)="nextPage(search$.page, search$.total_pages)">Next
   </button>
   <div class="row">
-  <div class="card text-white bg-dark" *ngFor="let movie of search['results']">
+  <div class="card text-white bg-dark" *ngFor="let movie of search$['results']">
     <img *ngIf=movie.poster_path class="card-img-top middle aligned tiny image" src='{{ imgUrl + movie.poster_path }}'>
     <img *ngIf=!movie.poster_path class="card-img-top middle aligned tiny image" src='https://via.placeholder.com/500x750'>
     <div class="card-body" >
@@ -26,12 +27,12 @@
     </div>
   </div>
   </div>
-  <button *ngIf="search.total_results" class="btn btn-outline-success my-2 my-sm-0"
+  <button *ngIf="search$.total_results" class="btn btn-outline-success my-2 my-sm-0"
           type="submit"
-          (click)="prevPage(search.page)">Previous
+          (click)="prevPage(search$.page)">Previous
   </button>
-  <button *ngIf="search.total_results" class="btn btn-outline-success my-2 my-sm-0"
+  <button *ngIf="search$.total_results" class="btn btn-outline-success my-2 my-sm-0"
           type="submit"
-          (click)="nextPage(search.page, search.total_pages)">Next
+          (click)="nextPage(search$.page, search$.total_pages)">Next
   </button>
 </div>
