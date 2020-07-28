@@ -1,0 +1,16 @@
+<div *ngIf="movie$" class="container">
+  <article class="row single-post mt-5 no-gutters">
+    <div class="col-lg-11">
+      <div class="image-wrapper float-left pr-3">
+        <img style="width: 250px" src='{{ imgUrl + movie$.poster_path }}'/>
+      </div>
+      <h2>{{movie$.title}}</h2>
+      <h4>{{movie$.release_date | date}}</h4>
+      <i>{{movie$.tagline}}</i>
+      <p>{{movie$.overview}}</p>
+    </div>
+  </article>
+</div>
+<div *ngIf="!movie$" class="container">
+  <p>Movie not found. Try searching again.</p>
+</div>

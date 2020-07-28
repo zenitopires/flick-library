@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router, RouteReuseStrategy } from '@angular/router';
 import { MovieService } from '../movie.service';
 import { SearchService } from '../search.service';
-import { map, tap } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { MovieDetailService } from '../movie-detail/movie-detail.service';
+import { map } from 'rxjs/operators';
 import { ISearch } from './ISearch';
 
 @Component({
@@ -24,14 +25,15 @@ export class MovieSearchComponent implements OnInit {
 
   constructor(private movieService: MovieService,
               private searchService: SearchService,
-              private route: ActivatedRoute) { }
+              private movieDetailService: MovieDetailService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   // Search for movies
   displaySearch(): void {
     this.movieService.getMovieSearch(this.movieUrl)
                                 .pipe(
-                                  map(item => this.search$ = item),
-                                  tap(item => console.log(item)),
+                                  map(movies => this.search$ = movies)
                                 )
                                 .subscribe();
   }
@@ -40,8 +42,7 @@ export class MovieSearchComponent implements OnInit {
   pageSearch(url: string): void {
     this.movieService.getMovieSearch(url)
                                 .pipe(
-                                  map(item => this.search$ = item),
-                                  tap(item => console.log(item))
+                                  map(item => this.search$ = item)
                                 )
                                 .subscribe();
   }
@@ -71,6 +72,13 @@ export class MovieSearchComponent implements OnInit {
       this.searchQuery + this.pageQuery + currentPage;
       this.pageSearch(searchUrl);
     }
+  }
+
+  // When selecting movie, pass its ID to the movie detail view
+  onSelect(selectedMovieId: number): void {
+    this.movieDetailService.movieId = selectedMovieId;
+    this.router.navigate(['/movie/', selectedMovieId]);
+    console.log(selectedMovieId);
   }
 
   ngOnInit() {
