@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { map, tap } from 'rxjs/operators';
-import { MovieDetailService } from './movie-detail.service';
+import { MovieDetailService } from '../movie-detail.service';
 import { IMovie } from '../IMovie';
 
 

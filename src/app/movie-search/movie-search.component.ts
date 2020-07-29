@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router, RouteReuseStrategy } from '@angular/router';
-import { MovieService } from '../movie.service';
+import { MovieService } from '../movie-detail/movie.service';
 import { SearchService } from '../search.service';
-import { MovieDetailService } from '../movie-detail/movie-detail.service';
+import { MovieDetailService } from '../movie-detail.service';
 import { map } from 'rxjs/operators';
-import { ISearch } from './ISearch';
+import { ISearch } from '../ISearch';
 
 @Component({
   selector: 'app-movie-search',

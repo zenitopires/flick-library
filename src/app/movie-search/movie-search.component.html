@@ -19,8 +19,10 @@
       *ngFor="let movie of search$['results']"
       (click)="onSelect(movie.id)">
     <a class="btn stretched-link"></a>
-    <img *ngIf=movie.poster_path class="card-img-top middle aligned tiny image" src='{{ imgUrl + movie.poster_path }}'>
-    <img *ngIf=!movie.poster_path class="card-img-top middle aligned tiny image" src='https://via.placeholder.com/500x750'>
+    <img *ngIf=movie.poster_path class="card-img-top middle aligned tiny image"
+          src='{{ imgUrl + movie.poster_path }}'>
+    <img *ngIf=!movie.poster_path class="card-img-top middle aligned tiny image"
+          src='https://via.placeholder.com/500x750'>
     <div class="card-body">
       {{movie.title}}
       <br>

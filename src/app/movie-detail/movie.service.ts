@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { ISearch } from './movie-search/ISearch';
+import { ISearch } from '../ISearch';
 
 @Injectable({
   providedIn: 'root'

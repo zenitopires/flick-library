@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MovieDetailService } from './movie-detail.service';
+import { MovieDetailService } from '../movie-detail.service';
 
 describe('MovieDetailService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
