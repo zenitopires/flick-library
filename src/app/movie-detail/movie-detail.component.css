@@ -2,12 +2,20 @@
   color: whitesmoke;
 }
 
-ul {
+ul > li {
+  display: inline-block;
+  zoom:1;
+  *display:inline;
   list-style: none;
 }
 
-li {
-  display: inline-block;
+.genre {
+  background: #948b09;
+  margin-left: 5px;
+  padding: 1px;
+  width: 2px;
+  height: 2px;
+  text-align: center;
 }
 
 .card {

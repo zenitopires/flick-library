@@ -2,12 +2,23 @@
   <article class="row single-post mt-5 no-gutters">
     <div class="col-lg-11">
       <div class="image-wrapper float-left pr-3">
-        <img style="width: 250px" src='{{ imgUrl + movie$.poster_path }}'/>
+        <img class="shadow bg-black rounded"
+              style="width: 250px"
+              src='{{ imgUrl + movie$.poster_path }}'
+        />
       </div>
       <h2>{{movie$.title}}</h2>
       <h4>{{movie$.release_date | date}}</h4>
-      <i>{{movie$.tagline}}</i>
-      <p>{{movie$.overview}}</p>
+      <div class="genres">
+        <p class="genre" style="display:inline;"
+        *ngFor="let genre of movie$['genres']">
+        {{genre.name}}
+        </p>
+      </div>
+      <p style="margin-top: 10px">{{movie$.tagline}}</p>
+      <p *ngIf="!movie$.tagline" style="margin-top: 10px;">{{movie$.overview}}</p>
+      <p *ngIf="movie$.tagline" style="margin-top: 5px;">{{movie$.overview}}</p>
+
     </div>
   </article>
 </div>

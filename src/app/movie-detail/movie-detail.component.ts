@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { MovieDetailService } from './movie-detail.service';
 import { IMovie } from '../IMovie';
 
@@ -27,7 +27,7 @@ export class MovieDetailComponent implements OnInit {
 
     this.movieDetailService.getMovieDetails(movieId)
         .pipe(
-          map(movie => this.movie$ = movie)
+          map(movie => this.movie$ = movie),
         ).subscribe();
   }
 
