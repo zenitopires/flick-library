@@ -78,7 +78,6 @@ export class MovieSearchComponent implements OnInit {
   onSelect(selectedMovieId: number): void {
     this.movieDetailService.movieId = selectedMovieId;
     this.router.navigate(['/movie/', selectedMovieId]);
-    console.log(selectedMovieId);
   }
 
   ngOnInit() {
