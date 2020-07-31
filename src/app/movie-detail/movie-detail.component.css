@@ -1,5 +1,5 @@
 * {
-  color: whitesmoke;
+  color: black;
 }
 
 ul > li {
@@ -10,7 +10,8 @@ ul > li {
 }
 
 .genre {
-  background: #948b09;
+  background: #868686;
+  color: white;
   margin-left: 5px;
   padding: 1px;
   width: 2px;

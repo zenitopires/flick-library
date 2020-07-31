@@ -15,7 +15,7 @@
           (click)="nextPage(search$.page, search$.total_pages)">Next
   </button>
   <div class="row">
-  <div class="card text-white bg-dark shadow"
+  <div class="card shadow"
       *ngFor="let movie of search$['results']"
       (click)="onSelect(movie.id)">
     <a class="btn stretched-link"></a>

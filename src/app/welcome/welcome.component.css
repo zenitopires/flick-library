@@ -1,8 +1,15 @@
-* {
-  color: whitesmoke;
+
+
+#mainpage {
+  color: black !important;
 }
 
 .card {
   max-width: 15rem;
   margin: 10px;
+  background-color: rgb(51, 51, 61);
+}
+
+.card-body {
+  color: white;
 }

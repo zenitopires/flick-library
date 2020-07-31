@@ -1,25 +1,29 @@
 <div class="container">
-  <h1>Welcome to Flick Library!</h1>
+  <div class="mainpage">
+    <h1>Welcome to Flick Library!</h1>
     <h2>This application is a work in progress! Please report any bugs!</h2>
     <h3>Use the search box in the upper right hand corner
         to search for movies!
     </h3>
-  <h4 style="margin-top: 40px">Top 20 Popular Movies of 2020</h4>
-  <div *ngIf="popular$" class="row">
-    <div class="card text-white bg-dark shadow"
-    *ngFor="let movie of popular$['results']"
-      (click)="onSelect(movie.id)">
-    <a class="btn stretched-link"></a>
-    <img *ngIf=movie.poster_path class="card-img-top middle aligned tiny image"
-          src='{{ imgUrl + movie.poster_path }}'>
-    <img *ngIf=!movie.poster_path class="card-img-top middle aligned tiny image"
-          src='https://via.placeholder.com/500x750'>
-    <div class="card-body">
-      {{movie.title}}
-      <br>
-      {{movie.release_date | date}}
-      <br>
-      Rating: {{movie.vote_average}}
+  </div>
+  <h4 style="margin-top: 40px">Top 20 Trending Movies</h4>
+  <div *ngIf="popular$" class="row col">
+    <div class="row">
+      <div class="card shadow"
+      *ngFor="let movie of popular$['results']"
+        (click)="onSelect(movie.id)">
+      <a class="btn stretched-link"></a>
+      <img *ngIf=movie.poster_path class="card-img-top middle aligned tiny image"
+            src='{{ imgUrl + movie.poster_path }}'>
+      <img *ngIf=!movie.poster_path class="card-img-top middle aligned tiny image"
+            src='https://via.placeholder.com/500x750'>
+      <div class="card-body">
+        {{movie.title}}
+        <br>
+        {{movie.release_date | date}}
+        <br>
+        Rating: {{movie.vote_average}}
+      </div>
     </div>
   </div>
 </div>
